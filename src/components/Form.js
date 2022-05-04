@@ -7,7 +7,7 @@ import validar from './validacion.js';
 class Form extends React.Component {
     state = {
         errors: {
-            default:"completá todos los campos"
+            default:" "
         }
     };
 
@@ -30,6 +30,7 @@ class Form extends React.Component {
         //tendra todos lo errores que tenga el formulario
         const result = validar(sinErros);
 
+        console.log(result);
         //devuelve un arreglo con las propiedades del objeto
         if (Object.keys(result)) {
             //asignar a errores los que obtenga de la funcion validar
@@ -37,6 +38,7 @@ class Form extends React.Component {
         }
 
     };
+
 
     handleClick = e => {
         const { errors } = this.state;
@@ -53,7 +55,6 @@ class Form extends React.Component {
 
         //guardar los errores del estado
         const { errors } = this.state;
-
 
         return (
             <div className="row justify-content-center">
@@ -83,7 +84,7 @@ class Form extends React.Component {
                                 name="email"
                                 value={this.state.email} />
                         </div>
-                        {errors.nombre && <p className="error">{errors.email}</p>}
+                        {errors.email && <p className="error">{errors.email}</p>}
 
 
                         <div className="form-group mb-4">
